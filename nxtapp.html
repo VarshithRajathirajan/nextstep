@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT STEP- A Career Guidance App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/014/248/482/original/growth-strategy-career-path-development-or-growing-business-employee-training-or-improvement-job-promotion-concept-flat-modern-illustration-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .navbar {
+            background-color: rgba(223, 148, 150, 0.9); /* Semi-transparent background */
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .navbar a:hover {
+            background-color: rgba(217, 226, 225, 0.8); /* Semi-transparent hover background */
+            border-radius: 5px;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .start-container, .profile-container, .chat-container, .recommender-container {
+            display: none;
+            flex-direction: column;
+            gap: 25px;
+            background: rgba(217, 226, 225, 0.9); /* Semi-transparent background */
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 700px;
+            margin: 50px auto;
+            color: #333; /* Dark text for readability */
+        }
+        input, select, button {
+            padding: 10px;
+            border: 1px solid #F6F4DA;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #DF9496;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="nextapp.html">Home</a>
+        <a href="#" onclick="showSection('start')">Start</a>
+        <a href="#" onclick="showSection('profile')">Profile</a>
+        <a href="#" onclick="showSection('chatbot')">AI Chatbot</a>
+        <a href="#" onclick="showSection('recommender')">Recommender</a>
+        <a href="free-courses.html">Free Courses</a>
+        <a href="free-webinars.html">Free Webinars</a>
+        <a href="internships.html">Internships</a>
+        <a href="roadmap.html">RoadMap</a>
+        <a href="success.html">Success stories</a>
+        <a href="scholarship.html">Scholarship</a>
+        <a href="topuniversities.html">Top Universities and Colleges</a>
+    </div>
+
+    <div class="container">
+        <!-- Start Page -->
+        <div id="start" class="start-container">
+            <h2>Instructions</h2>
+            <ol>
+                <li>Practice past tests before the one that counts</li>
+                <li>Make sure you understand what’s being asked of you</li>
+                <li>Answer honestly</li>
+                <li>Read the questions thoroughly</li>
+                <li>Be confident in your position</li>
+                <li>Be honest</li>
+                <li>Check through the test before submitting it</li>
+                <li>Ask for feedback</li>
+                <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAX9FnI5UMEcxREFPMTEyVTNURkVOQzhCSlRZT0o0Ui4u" 
+                    frameborder="0" 
+                    marginwidth="0" 
+                    marginheight="0" 
+                    style="border: none; max-width:100%; max-height:100vh;" 
+                    allowfullscreen 
+                    webkitallowfullscreen 
+                    mozallowfullscreen 
+                    msallowfullscreen>
+                </iframe>
+            </ol>
+            <button onclick="showSection('profile')">Go to Profile</button>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile" class="profile-container">
+            <h2>Profile</h2>
+            <label>Qualification:</label>
+            <select id="qualification">
+                <option value="12th-arts">12th Arts</option>
+                <option value="12th-science">12th Science</option>
+                <option value="ug">UG</option>
+                <option value="pg">PG</option>
+            </select>
+            <label>Marks:</label>
+            <input type="number" id="marks" placeholder="Enter your marks">
+            <label>Rate Yourself (1-4):</label>
+            <input type="number" id="score" min="1" max="4" placeholder="Enter your score">
+            <button onclick="saveProfile()">Save Profile</button>
+        </div>
+
+        <!-- Chatbot Page -->
+        <div id="chatbot" class="chat-container">
+            <h2>AI Chatbot Assistance</h2>
+            <div id="chat-window"></div>
+            <input type="text" id="user-input" placeholder="Ask me anything...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <!-- Recommender Page -->
+        <div id="recommender" class="recommender-container">
+            <h2>Study Recommender</h2>
+            <p> Please Choose your field According to your Score:</p>
+            <li> 1 --> Analytical & Logical Thinker → STEM, Engineering, Data Science </li>
+            <li> 2 --> Creative & Expressive → Arts, Media, Psychology, Literature </li>
+            <li> 3 --> Hands-on & Experimental → Medicine, Research, Environmental Sciences</li>
+            <li> 4 --> → Leadership & Business-Oriented → Management, Marketing, Entrepreneurship </li>
+            <label>Field of Interest:</label>
+            <select id="field-interest">
+                <option value="med">Medicine</option>
+                <option value="engineering">Engineering</option>
+                <option value="agriculture">Agriculture</option>
+                <option value="anthropology">Anthropology</option>
+                <option value="architecture">Architecture</option>
+                <option value="astronomy">Astronomy</option>
+                <option value="biology">Biology</option>
+                <option value="business">Business</option>
+                <option value="bioinformatics">Bio Informatics</option>
+                <option value="biotechnology">BioTechnology</option>
+                <option value="botany">Botany</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="cognitive science">Cognitive Science</option>
+                <option value="criminology">Criminology</option>
+                <option value="dentistry">Dentistry</option>
+                <option value="design">Design</option>
+                <option value="drama and Theater">Drama & Theater</option>
+                <option value="economics">Economics</option>
+                <option value="fashion education">Fashion Education</option>
+                <option value="film studies">Film Studies</option>
+                <option value="food science">Food Science</option>
+                <option value="forestry">Forestry</option>
+                <option value="geography">Geography</option>
+                <option value="genetics">Genetics</option>
+                <option value="history">History</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="information technology">Information Technology IT</option>
+                <option value="industrial design">Industrial Design</option>
+                <option value="international relations">International Relations</option>
+                <option value="journalism">Journalism</option>
+                <option value="law">Law</option>
+                <option value="literature">Literature</option>
+                <option value="linguists">Linguists</option>
+                <option value="marine biology">Marine Biology</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="nanotechnology">Nano Technology</option>
+                <option value="neuroscience">Neuroscience</option>
+                <option value="nutrition">Nutrition</option>
+                <option value="political science">Political Science</option>
+                <option value="robotics">Robotics</option>
+                <option value="sports and science">Sports and Science</option>
+                <option value="sociology">Sociology</option>
+                <option value="statistics">Statistics</option>
+                <option value="sustainability studies">Sustainability Studies</option>
+                <option value="theology">Theology</option>
+                <option value="tourism management">Tourism Management</option>
+                <option value="transportation engineering">Transportation Engineering</option>
+                <option value="urban planning">Urban Planning</option>
+                <option value="vetinary science">Vetinary Science</option>
+                <option value="visual arts">Visual Arts</option>
+                <option value="waste management">Waste Management</option>
+                <option value="women studies">Women Studies</option>
+                <option value="wildlife conservation">Wildlife Conservation</option>
+            </select>
+            <label>Parent's Suggestion:</label>
+            <select id="parents-suggestion">
+                <option value="Supportive">Supportive</option>
+                <option value="Neutral">Neutral</option>
+                <option value="Against">Against</option>
+            </select>
+            <label>Experienced Person's Suggestion:</label>
+            <select id="expert-suggestion">
+                <option value="Recommended">Recommended</option>
+                <option value="Not Recommended">Not Recommended</option>
+            </select>
+            <button onclick="getRecommendation()">Get Recommendation</button>
+            <div id="recommendation-result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Predefined career-related questions and answers
+        const careerQA = {
+            "What are the most in-demand careers in 2025?": "In 2023, the most in-demand careers include software engineering, data science, healthcare professions, artificial intelligence specialists, and cybersecurity experts.",
+            "How do I start a career in data science?": "To start a career in data science, you should learn programming languages like Python or R, study statistics and machine learning, and work on real-world projects. A degree in a related field can also be helpful.",
+            "What skills are required for a software engineer?": "Key skills for a software engineer include proficiency in programming languages like Java, Python, or C++, problem-solving abilities, and knowledge of algorithms and data structures.",
+            "What is the future scope of artificial intelligence?": "The future scope of AI is vast, with applications in healthcare, finance, autonomous vehicles, and more. AI is expected to revolutionize industries and create new job opportunities.",
+            "How can I become a cybersecurity expert?": "To become a cybersecurity expert, you should gain knowledge in network security, ethical hacking, and cryptography. Certifications like CISSP or CEH can also be beneficial.",
+            "What are the best colleges for computer science?": "Top colleges for computer science include MIT, Stanford, Carnegie Mellon, and Indian Institutes of Technology (IITs).",
+            "What is the role of a data analyst?": "A data analyst collects, processes, and analyzes data to help organizations make informed decisions. They use tools like Excel, SQL, and data visualization software.",
+            "What are the career options in healthcare?": "Career options in healthcare include doctors, nurses, pharmacists, medical researchers, and healthcare administrators.",
+            "How do I become a machine learning engineer?": "To become a machine learning engineer, you should study machine learning algorithms, programming languages like Python, and frameworks like TensorFlow or PyTorch.",
+            "What is the average salary of a software engineer?": "The average salary of a software engineer varies by location and experience, but it typically ranges from $80,000 to $120,000 per year.",
+            "What are the top skills for a data scientist?": "Top skills for a data scientist include programming (Python/R), statistics, machine learning, data visualization, and domain knowledge.",
+            "What is the difference between AI and machine learning?": "AI is a broader concept that involves machines performing tasks that require human intelligence, while machine learning is a subset of AI that focuses on training machines to learn from data.",
+            "What are the best online courses for learning programming?": "Some of the best online courses for learning programming are offered by platforms like Coursera, Udemy, and edX. Examples include 'Python for Everybody' and 'CS50 by Harvard.'",
+            "What is the future of robotics?": "The future of robotics includes advancements in autonomous robots, human-robot collaboration, and applications in industries like manufacturing, healthcare, and space exploration.",
+            "How do I switch careers to IT?": "To switch careers to IT, you can start by learning programming languages, earning certifications like CompTIA or AWS, and gaining hands-on experience through projects or internships."
+        };
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.start-container, .profile-container, .chat-container, .recommender-container').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'flex';
+        }
+
+        function saveProfile() {
+            const qualification = document.getElementById("qualification").value;
+            const marks = document.getElementById("marks").value;
+            const score = document.getElementById("score").value;
+
+            if (!qualification || !marks || !score) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            alert("Profile saved successfully!");
+            showSection('chatbot'); // Redirect to chatbot after saving profile
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            if (!userInput) return;
+
+            const chatWindow = document.getElementById("chat-window");
+            const userMessage = document.createElement("p");
+            userMessage.textContent = "You: " + userInput;
+            chatWindow.appendChild(userMessage);
+
+            setTimeout(() => {
+                const botResponse = document.createElement("p");
+                botResponse.textContent = "AI: " + (careerQA[userInput] || "I'm sorry, I don't have an answer for that. Please ask another question.");
+                chatWindow.appendChild(botResponse);
+            }, 1000);
+
+            document.getElementById("user-input").value = "";
+        }
+
+        function getRecommendation() {
+            const field = document.getElementById("field-interest").value;
+            const parent = document.getElementById("parents-suggestion").value;
+            const expert = document.getElementById("expert-suggestion").value;
+
+            let recommendation = "";
+            if (field === "a_i") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in AI, Machine Learning, Deep Learning</p>
+                    <p><strong>Top Paying Jobs:</strong> AI Engineer, Data Scientist, NLP Specialist</p>
+                    <p><strong>Why AI?</strong> AI is the future of automation, healthcare, and industry advancements.</p>
+                    <p><strong>Field Future Scope:</strong> AI will dominate technology-driven industries.</p>
+                    <p><strong>Industry Future Scope:</strong> High demand in automation, robotics, and smart systems.</p>
+                    <p><strong>Top Colleges:</strong> MIT, Stanford, Carnegie Mellon, Vel Tech University </p>
+                    <p><strong>Basic Projects:</strong> Chatbots, Image Recognition, Self-driving car simulation</p>
+                    <p><strong>Additional Courses:</strong> Python, TensorFlow, Cloud Computing</p>`;
+            }
+	 else if (field === "data_science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Computer Science, Mathematics, Statistics</p>
+                    <p><strong>Top Paying Jobs:</strong> Data Scientist, data Engineer, Data Architect, Businesss Intelligence Architect</p>
+                    <p><strong>Why Data Science?</strong>Intellectual Curiosity, Problem-Solving, High Demand, Impactful Career.</p>
+                    <p><strong>Field Future Scope:</strong> AI will dominate technology-driven industries.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Finance, Healthcare and retail</p>
+                    <p><strong>Top Colleges:</strong>  Indian Institutes of Technology (IITs), Indian Statistical Institute (ISI), International Institute of Information Technology (IIITs), Indian Institute of Science (IISc), Birla Institute of Technology and Science (BITS Pilani), Vel Tech University.</p>
+                    <p><strong>Basic Projects:</strong> Data Analysis Project, big data Projectr, Machine learning Project</p>
+                    <p><strong>Additional Courses:</strong> Machine Learning, Advanced Statistics, Data technologies, Cloud computing</p>`;
+            } 
+	else if (field === "computer_science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Computer Science or Bacheolor/ Master in Technology in Computer science</p>
+                    <p><strong>Top Paying Jobs:</strong> Software Engineer, Cyber Security, Machine Learning Engineer, Cloud Engineer</p>
+                    <p><strong>Why Computer Science?</strong> Intellectual Curiosity, Problem-Solving, High Demand, Impactful Career.</p>
+                    <p><strong>Field Future Scope:</strong> AI, Mavhine Learning, Cybersecurity, Cloud Computing.</p>
+                    <p><strong>Industry Future Scope:</strong> Digital Transformation, Innovation</p>
+                    <p><strong>Top Colleges:</strong>  Indian Institutes of Technology (IITs), National Institute of Technology (NIT), International Institute of Information Technology (IIITs), Indian Institute of Science (IISc), Birla Institute of Technology and Science (BITS Pilani), Vel Tech University, IIIT Hyderabad.</p>
+                    <p><strong>Basic Projects:</strong> software development,Web development, Mobile App Development</p>
+                    <p><strong>Additional Courses:</strong> Machine Learning, Data science, web development, Cloud computing</p>`;
+            } 
+	if (field === "med") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> A Doctor of Medicine (MD) or Doctor of Osteopathic Medicine (DO)</p>
+                    <p><strong>Top Paying Jobs:</strong> Specality Physicians ( Cardiologists, Dermotologists, Radiologists, Orthopedic Surgeons)</p>
+                    <p><strong>Why Medicine?</strong> A deep desire to care for patients and improve their health and well-being.</p>
+                    <p><strong>Field Future Scope:</strong> Technological Advancements,, Aging Population, Preventive Care and Wellness.</p>
+                    <p><strong>Industry Future Scope:</strong> Healthcare Systems, Pharmaceuticals and Biotechnology, Health Insurance and Digital Health</p>
+                    <p><strong>Top Colleges:</strong>  AIIMS, CMC, AFMC, MAMC, LHMC, JIPMER, KGMC.</p>
+                    <p><strong>Basic Projects:</strong> Clinical Rotation, Research Projects, Community Health Projects</p>
+                    <p><strong>Additional Courses:</strong> Medical Ethics, Global Health, Medical Research Methods, Medical Law,Health Informatics, Clinical Nutrition</p>`;
+            } 
+	else if (field === "engineering") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Technology, Bachelor's/ Master's in Engineering</p>
+                    <p><strong>Top Paying Jobs:</strong> Petroleum Engineer, Software Engineers, Aerospace Engineers, Chemical Engineers, Nuclear Enginner, Management/ Executive Roles</p>
+                    <p><strong>Why Engineering?</strong>problem-Solving, Craetivity and innovation, Impactful Career, Intellectual Stimulation.</p>
+                    <p><strong>Field Future Scope:</strong> Sustainable Engineering, AI&ML, Biotechnology and Biomedical engineering Nanotechnology.</p>
+                    <p><strong>Industry Future Scope:</strong> Technological advancements, Infrastructure development, Global Challenges</p>
+                    <p><strong>Top Colleges:</strong>  IITs, NITs, BITS Pilani, VIT, Vel Tech University.</p>
+                    <p><strong>Basic Projects:</strong> Mechanical Engineering- Designing a bridge or building structure, Mechanical Engineering- Designing a machine component or system, Electrical Engineering- Designing an electrical system or circuit, COmputer Science- Developing a software application or algorithm</p>
+                    <p><strong>Additional Courses:</strong> Machine Learning, Advanced Statistics, Data technologies, Cloud computing, Python, Frontend and Backend programming</p>`;
+            } 
+
+	else if (field === "agriculture") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Agriculture/ Agronomy/ Horticulture/ animal science</p>
+                    <p><strong>Top Paying Jobs:</strong> Agricultural Scientist, Agricultural Engineers, Farm managers, Agricultural Economists, Food Scientist</p>
+                    <p><strong>Why Agriculture?</strong> A love for working Outdoors, Interest in science and technology, Desire to feed the world,Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Precision Agriculture, Sustainable Agriculture, Biotechnology and Genetic Engineering, Climate Change Adaptation.</p>
+                    <p><strong>Industry Future Scope:</strong> Food Production, AgriBusiness, Technologies</p>
+                    <p><strong>Top Colleges:</strong>  ICAR, IARI, SAUs, Govind Ballahbh Pant University of Agricuture and Technology, VIT Vellore, Tamilnadu Agricultural University.</p>
+                    <p><strong>Basic Projects:</strong> crop Production Project, Soil, Analysis Project, Animal Husbandry project</p>
+                    <p><strong>Additional Courses:</strong> Agricultural Economucs, food science and technologyagribusiness management,livestock management, horticulture, agricultural engineering</p>`;
+	}
+	else if (field === "anthropology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's Degree in Anthropology, Master's Degree in Anthropology, Doctoral Degree (Ph.D.) in Anthropology</p>
+                    <p><strong>Top Paying Jobs:</strong> Anthropologist, Writer/Editor( Creating content for publications, conducting research, and editing articles.)</p>
+                    <p><strong>Why Anthropology?</strong> Anthropology helps you understand and appreciate the diversity of human cultures and societies. It fosters a global perspective and open-mindedness.It provides insights into the history of human evolution, migration patterns, and the development of civilizations.</p>
+                    <p><strong>Field Future Scope:</strong> The future scope of anthropology is promising, as the field continues to evolve and intersect with various disciplines ( Digital Anthropology, Medical Anthropolgy, Forensic Anthropology).</p>
+                    <p><strong>Industry Future Scope:</strong> e future scope of the anthropology industry is quite promising, with several emerging trends and opportunities</p>
+                    <p><strong>Top Colleges:</strong>  IIT Madras.</p>
+                    <p><strong>Basic Projects:</strong> Urban Ethnography, Health and healing Practices</p>
+                    <p><strong>Additional Courses:</strong> Medical anthropology, Eviroinmental anthropology</p>`;
+            } 
+	else if (field === "architecture") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor of Architecture (B.Arch)</p>
+                    <p><strong>Top Paying Jobs:</strong> Principal Architect, Design Architect, Urban Planner, Landscape Architect</p>
+                    <p><strong>Why Architecture?</strong>Passion for design, Creative Expression, Prtoblem Solving.</p>
+                    <p><strong>Field Future Scope:</strong> Sustainable Design, Technological Advancements, Urbanization, Smart Buildings.</p>
+                    <p><strong>Industry Future Scope:</strong> Infrastructure development, real estate growth, renovation and retrofitting</p>
+                    <p><strong>Top Colleges:</strong>  IIt Rooke, SPA delhi, IIT Kharagpur,Chandigar College of Architecture, CPET University.</p>
+                    <p><strong>Basic Projects:</strong> conceptual sketches, Model Making, Space Planning</p>
+                    <p><strong>Additional Courses:</strong> Sustainable design, Interior design, Parametric design</p>`;
+            } 
+	else if (field === "astronomy") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> B.Sc. in Physics, B.Tech. in Engineering Physics, B.Sc. in Astronomy/ Astrophysics/ Space Science</p>
+                    <p><strong>Top Paying Jobs:</strong> Astronomer/ Astrophysicist, Cosmologist, Space Scientist</p>
+                    <p><strong>Why Astronomy?</strong> Curiosity about the universe, Scientific Inquiry, Intellectual Challenge.</p>
+                    <p><strong>Field Future Scope:</strong> Technological Advancement, Exoplanet Research,Astrobiology,Big Data Astronomy.</p>
+                    <p><strong>Industry Future Scope:</strong> Space Exploration, Space technology, Commercial Space</p>
+                    <p><strong>Top Colleges:</strong>  IISc, IUCAA, NCRA, ARIES, IIA.</p>
+                    <p><strong>Basic Projects:</strong> Computational Astronomy, Literature review, Data Analysis</p>
+                    <p><strong>Additional Courses:</strong> Planetary Science, Steller Evolution, Galactic Astronomy, Computational Astronomy</p>`;
+            } 
+	else if (field === "biology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's in Biology/ botony/ zoology/ microbiology/ genetics/ biotechnology</p>
+                    <p><strong>Top Paying Jobs:</strong> biotechnology, bioinformatics, biomedical engineering, pharmaceuticals</p>
+                    <p><strong>Why Biology?</strong> Curiosity about the life, impactful career, problem-solving, continuous learning.</p>
+                    <p><strong>Field Future Scope:</strong> Genomics and Personalized medicine, biotechnology and synthetic biology, neurobiology, and Brain Research, Ecology and conservation.</p>
+                    <p><strong>Industry Future Scope:</strong> healthcare, food and agriculture, enviroinmental sustainability</p>
+                    <p><strong>Top Colleges:</strong>  IISc, university of delhi, BHU, Varnasi, JNU, university of Hyderabad.</p>
+                    <p><strong>Basic Projects:</strong> Field studies, literature, data analysis</p>
+                    <p><strong>Additional Courses:</strong> fmicrobiology, biochemistry, applied biology</p>`;
+            } 
+	else if (field === "business") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> BBA/MBA, B.Sc. in Business, B.Com. , Finance, Marketting, Accounting</p>
+                    <p><strong>Top Paying Jobs:</strong> Executive Manager, Finance, Consulting, Marketting, Entreprenurship</p>
+                    <p><strong>Why Business?</strong> Career Opportunities, Financial reward, Impactful career, personal Growth.</p>
+                    <p><strong>Field Future Scope:</strong> Technology and Automation, globalization, sustainability, E-Commerce and digital marketting.</p>
+                    <p><strong>Industry Future Scope:</strong> technological innovation, changing consumer preferences, Global Competition</p>
+                    <p><strong>Top Colleges:</strong>  IIMs, XLRI, FMS, SPJIMR, Vel Tech University .</p>
+                    <p><strong>Basic Projects:</strong> Business plan development, Financial Analysis, Market Research</p>
+                    <p><strong>Additional Courses:</strong> Digital Marketting, Project Management, Business lae, Economics, data analysis</p>`;
+            } 
+	else if (field === "bioinformatics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Degrees in bioinformatics, Computational Biology, Genetics, Biotechnology, Computer Science / M.Sc. in Bioinformatics</p>
+                    <p><strong>Top Paying Jobs:</strong> Bioinformatics scientist, Computational Biologist, Data Scientist, Bioinformatics Software developer</p>
+                    <p><strong>Why Bio Informatics?</strong> Interdisciplinary interest, Impactful Career, High Demand.</p>
+                    <p><strong>Field Future Scope:</strong> Big Data Biology, Personalized Medicine, Drug Discovery.</p>
+                    <p><strong>Industry Future Scope:</strong> Biotechnology, Pharmaceuticals, Healthcare</p>
+                    <p><strong>Top Colleges:</strong>  IISc, IITs, NIPERs, JNU, .</p>
+                    <p><strong>Basic Projects:</strong> Sequence Analysis, Gene Expression Analysis, Data Visualization</p>
+                    <p><strong>Additional Courses:</strong> Advanced Bioinformatics courses, Specalized Bioinformatics courses</p>`;
+            } 
+
+	else if (field === "biotechnology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> B.Sc. Biotechnology, biochemistry, microbiology, Genetics,  M.Sc. in Biotechnology</p>
+                    <p><strong>Top Paying Jobs:</strong> Research Scientist, Bioprocess Engineer, Bioinformatics Specalist, Regulatory Affairs Specalist</p>
+                    <p><strong>Why Biotechnology?</strong> Curiosity about the universe, Scientific Inquiry, Intellectual Challenge.</p>
+                    <p><strong>Field Future Scope:</strong> Personalized Medicine, Synthetic Biology, Agricultural Biotechnology, Biomanufacturing.</p>
+                    <p><strong>Industry Future Scope:</strong> Healthcare needs, Enviroinmental concerns, </p>
+                    <p><strong>Top Colleges:</strong>  IITs, IISCs, NIPERs, JNU Delhi, University of delhi, .</p>
+                    <p><strong>Basic Projects:</strong> Computational Astronomy, Literature review, Data Analysis</p>
+                    <p><strong>Additional Courses:</strong> Genetic Engineering, Cell culture, Bioinformatics analysis, Biochemical Assays </p>`;
+            } 
+	else if (field === "botany") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Botany</p>
+                    <p><strong>Top Paying Jobs:</strong> Plant Physiologist, Plant genetics, Plant phatologist, Ecologist, Botaniocal garden Curator</p>
+                    <p><strong>Why Botany?</strong> Passion for plants, Scientific curiosity, Enviroinmental Stewardship.</p>
+                    <p><strong>Field Future Scope:</strong> Climate Change, Food Security, Medicinal plants, Plant biotechnology.</p>
+                    <p><strong>Industry Future Scope:</strong> Agriculture, Pharmaceuticals, Horticulture, Enviroinmental Consultanting</p>
+                    <p><strong>Top Colleges:</strong>  NBRI, BSI, University of Delhi, Banaras Hindu University.</p>
+                    <p><strong>Basic Projects:</strong> Plant taxanomy, Plant physiology experiment, Plant ecology research,Ethnobotany project</p>
+                    <p><strong>Additional Courses:</strong> Biotechnology, Phycology, Mycology, Economic Botony, Phytochemistry</p>`;
+            } 
+	else if (field === "chemistry") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Chemistry</p>
+                    <p><strong>Top Paying Jobs:</strong> Research scientist, Process Chemist, Analytical Chemist</p>
+                    <p><strong>Why Botany?</strong> Curiosity about the matter, Problem-Solving, Impactful career, Continuois learning.</p>
+                    <p><strong>Field Future Scope:</strong> Sustainable chemistry, Nanotechnology, Biochemistry.</p>
+                    <p><strong>Industry Future Scope:</strong> Technological Advancements, Growing Demand</p>
+                    <p><strong>Top Colleges:</strong>  IIts, IISc,NISERs, University of Delhi, Vel Tech University.</p>
+                    <p><strong>Basic Projects:</strong> Labarotory Experiment, Chemical Sunthesis, Analytical Techniques, Research projects</p>
+                    <p><strong>Additional Courses:</strong> Applied Chemistry, chemical Engineering, Biochemistry and materials science</p>`;
+            } 
+	else if (field === "cognitive science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in Cognitive Science, Bachelors of Science </p>
+                    <p><strong>Top Paying Jobs:</strong> User Experience (UX) Researcher, Data Scientist, AI Researcher, Cognitive Neuroscientist, Human Factors Engineer</p>
+                    <p><strong>Why Cognitive Science?</strong> Understanding the mind, Interdisciplinary interest, problem-Solving, Impactful career.</p>
+                    <p><strong>Field Future Scope:</strong> Neurotechnology, Artificial Intelligence, Cognitive Enhancement.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Healthcare</p>
+                    <p><strong>Top Colleges:</strong>  IIts, IISc,NBRC, University of Delhi, JNU delhi.</p>
+                    <p><strong>Basic Projects:</strong> Cognitive experiment, Computational Modelling, Neuroimaging Studies</p>
+                    <p><strong>Additional Courses:</strong> behavioural neuroscience, developmental physcology</p>`;
+            } 
+	else if (field === "criminology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Criminology, Criminal Justice/ Bachelors of Arts</p>
+                    <p><strong>Top Paying Jobs:</strong> Forensic Scientist, Crime Analyst, Policy Analyst, FBI, DEA, Correctional Administrator, Criminology Professor</p>
+                    <p><strong>Why Criminology?</strong> Understanding Crime, Social Justice, Intellectual Curiosity, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Data-driven Criminology, Focus on Prevention, Restroative Justice, Cybercrime.</p>
+                    <p><strong>Industry Future Scope:</strong> Law Enforcement, Corrections, Government, Non-profit Organizations</p>
+                    <p><strong>Top Colleges:</strong>  National Law University, Delhi School of Economics, Tata Institute of Social Sciences, University of Madras, University of Mumbai.</p>
+                    <p><strong>Basic Projects:</strong> Research Projects, Data Anaysis Projects, policy Analysis Projects, </p>
+                    <p><strong>Additional Courses:</strong> Sports psychology, Social deviance theory, data analysis research method, foreinsic science</p>`;
+            } 
+	else if (field === "dentistry") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Dental Surgery/ Doctor of dental surgery/ Doctor of dental medicine</p>
+                    <p><strong>Top Paying Jobs:</strong> Specality dentist, Private Practice, Dental Specalists in Hospitals, Academic Dentists</p>
+                    <p><strong>Why Dentist?</strong> Scientific Interest, Hands-on-Work, Stable Career.</p>
+                    <p><strong>Field Future Scope:</strong> Technology, Cosmetic Dentistry, Geriatic Dentistry, Preventive dentistry.</p>
+                    <p><strong>Industry Future Scope:</strong> Oral Health Awareness, Aging Population, Dental insurance</p>
+                    <p><strong>Top Colleges:</strong>  AIIMS, MAIDS, Government of Dental College and Hospital Mumbai, Sri Ramachandra Institute of Higher Education and Research Chennai, MCDS.</p>
+                    <p><strong>Basic Projects:</strong> Clinical Rotations, Research Projects, Community Outreach, Patient Management </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Aesthetic Laser Dentistry, Certificate in Forensic Odotology, Dental Radiology, Advanced Dental Materials,Oral Health Education</p>`;
+            } 
+	else if (field === "design") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in Drama</p>
+                    <p><strong>Top Paying Jobs:</strong> Actors, Directors, Playwrights, Producers</p>
+                    <p><strong>Why Drama & Theatre?</strong> Passion for Story telling, Crative Expression, Collaboration, Impactful Art.</p>
+                    <p><strong>Field Future Scope:</strong> Digital Media, Immersive Theatre, Diversity and Inclusion.</p>
+                    <p><strong>Industry Future Scope:</strong> Funding, Audience Engagement.</p>
+                    <p><strong>Top Colleges:</strong>  NSD Delhi, NIDA, FTII, SRFTI, University of Delhi.</p>
+                    <p><strong>Basic Projects:</strong> Acting Scenes, Directing Short Plays, Designing Sets or Costumes, Stage Management</p>
+                    <p><strong>Additional Courses:</strong> Courses in Movement and dance</p>`;
+            } 
+	else if (field === "economics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in Economics, B.Sc. in Economics</p>
+                    <p><strong>Top Paying Jobs:</strong> Economist, Financial Analyst, Data scientist (with economics background), Management Consultant</p>
+                    <p><strong>Why Economics?</strong> Understanding the world, Problem-Solving, Analytical Skills, Diverse career Paths.</p>
+                    <p><strong>Field Future Scope:</strong> Behavioural Economics, Data Economics, Globalization.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Finance, Consulting</p>
+                    <p><strong>Top Colleges:</strong>  DSE, ISI, IITs, Gokhale Institute of Politics and Economics, JNU Delhi.</p>
+                    <p><strong>Basic Projects:</strong> Economic Research, Data Analysis, Case studies </p>
+                    <p><strong>Additional Courses:</strong> Bachelor of Economics</p>`;
+            } 
+	else if (field === "envirionmental science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Enviroinmental Science</p>
+                    <p><strong>Top Paying Jobs:</strong> Enviroinmental Consultant, Enviroinmental Engineer, Enviroinmental Manager, Sustainability Manager, Policy Analyst</p>
+                    <p><strong>Why Enviroinmental Science?</strong> Enviroinmental Concern, Scientific Interest, Making a difference, Interdisciplinary field.</p>
+                    <p><strong>Field Future Scope:</strong> Climate change, Resorce scarcity, Enviroinmental Regulations.</p>
+                    <p><strong>Industry Future Scope:</strong> Public Awareness, Corporate Sustainability, Technological Innovation.</p>
+                    <p><strong>Top Colleges:</strong>  IITs, IISc, TERI School of Advanced Studies, University of Delhi.</p>
+                    <p><strong>Basic Projects:</strong> Ecological Surveys, Pollution Monitoring, Sustainability Audits </p>
+                    <p><strong>Additional Courses:</strong> Bachelor/ Master of Enviroinmental Science, Enviroinmental Law</p>`;
+            } 
+	else if (field === "fashion design") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Fine Arts/ Design</p>
+                    <p><strong>Top Paying Jobs:</strong> Creative Direction/Head Designer, Senior Fashion Designer, Textile Designer, Costume Designer fashion Stylist</p>
+                    <p><strong>Why Fashion Design?</strong> Passion for fashion, Trendsetting.</p>
+                    <p><strong>Field Future Scope:</strong> Technology and fashion, Sustainable fashion, Personalized Fashion, e-Commerce and Online Retail.</p>
+                    <p><strong>Industry Future Scope:</strong> Luxury Fashion, Fast Fashion, Textile Industry, Retail</p>
+                    <p><strong>Top Colleges:</strong>  NIFT, NID, Pearl Academy, SID, WUD.</p>
+                    <p><strong>Basic Projects:</strong> Garment Construction Project, Textile Design Project, Fasion Illustration Project, Portofolio development Project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Fashion Marketting, Courses in Fashion Photography</p>`;
+            } 
+	else if (field === "film studies") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Film Studies, Cinema Studies or Media Studies</p>
+                    <p><strong>Top Paying Jobs:</strong> Film Critic/ Journalist, Screenwriter, Film Producer, Film Executive, Archivist/ Curator, Professor/ Academic</p>
+                    <p><strong>Why Film Studies?</strong> Passion for film, Intellectual Curiosity, Critical Thinking, Understanding Media.</p>
+                    <p><strong>Field Future Scope:</strong> Digital Media, Interactive Storytelling, Media Literacy.</p>
+                    <p><strong>Industry Future Scope:</strong> Film Production and distribution, Media & Entertainment, Education and Academia</p>
+                    <p><strong>Top Colleges:</strong>  FTII, Satyajit ray Film and television Institute, NID, University of Delhi, Vel Tech university.</p>
+                    <p><strong>Basic Projects:</strong> Film Analysuis Paper, Fil ReviewsScreen Play Analysis,Creating a film Blog </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Film Editting, Certificate in Film Production, Certificate in Screenwriting</p>`;
+            } 
+
+	else if (field === "food science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in food Science/ Food Science Technology</p>
+                    <p><strong>Top Paying Jobs:</strong> Food Scientist, Food Technologist, Food chemist, Food Microbiologist, Sensory Scientist</p>
+                    <p><strong>Why Food Science?</strong> Fashion for food, Scientific Curiosity, Problem Solving, Impactful Career.</p>
+                    <p><strong>Field Future Scope:</strong> Food Safety, Nutrition and Health, Sustainable, Food Systems, Food Innovation.</p>
+                    <p><strong>Industry Future Scope:</strong> Population growth, Changing Consumer Preferences</p>
+                    <p><strong>Top Colleges:</strong>  CFTRI, NIFTEM, IIFPT, University of Delhi, IITs.</p>
+                    <p><strong>Basic Projects:</strong> Food Analysis, Food Processing, Sensory Evolution </p>
+                    <p><strong>Additional Courses:</strong> Certificate in FSMS, Certificate in Analytical approaches to food safety Issues</p>`;
+            } 
+	else if (field === "fashion education") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Forestry</p>
+                    <p><strong>Top Paying Jobs:</strong> Forest MAanager, Consulting Forester, Wildlife Biologist, Enviroinmental Consultant ( with forestry expertise), Research Scientist ( Forest Ecology or related)</p>
+                    <p><strong>Why Forestry?</strong> Love for Nature, Enviroinmental Sterwardship, Scientific Interest, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Climate Change, Sustainable Forestry, Technology.</p>
+                    <p><strong>Industry Future Scope:</strong> Demand for Wood Products, Economic Services</p>
+                    <p><strong>Top Colleges:</strong>  FRI, IIFM, Govind Ballabh Pant University of Agriculture and Technology, Brisa Agricultral University, Ranchi, University of Agricultural Sciences.</p>
+                    <p><strong>Basic Projects:</strong> Forest Inventory, Silvicultural Prescriptions, Wildlife Habitat Assessment, Wtershed Management Plans </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Ureban forestry, Certificate in Management Conservation, Certificate in fire managent</p>`;
+            } 
+	else if (field === "geography") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts/ Bachelor's/ Master's of Science in Geography</p>
+                    <p><strong>Top Paying Jobs:</strong> Geospatial Analyst, Urban and Regional Planner Enviroinmental Consultant, Cartographer, GIS Specalist</p>
+                    <p><strong>Why Geography?</strong> Understanding the world, Interdisciplinary Interest, problem-Solving, Impactful Career.</p>
+                    <p><strong>Field Future Scope:</strong> Geospatial Technology, Sustainability, Globalization.</p>
+                    <p><strong>Industry Future Scope:</strong> Government, Enviroinmental Consulting, Technology</p>
+                    <p><strong>Top Colleges:</strong>  JNU New Delhi, University of Delh, BHU Varnasi.</p>
+                    <p><strong>Basic Projects:</strong> GIS Project, Fieldwork, Case Studies </p>
+                    <p><strong>Additional Courses:</strong> diploma in Eniroinmental Management, Certificate in GIS</p>`;
+            } 
+	else if (field === "genetics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of science in Genetics/ Biology</p>
+                    <p><strong>Top Paying Jobs:</strong> Geneticist, Bioinformatician, Biotechnology/ Pharmaceutical scientist, Genetic Counselor, Medical Geneticist.</p>
+                    <p><strong>Why Genetics?</strong> Understandining Life, Scientific Curiosity, Problem-Solving, Impactful Career.</p>
+                    <p><strong>Field Future Scope:</strong> Personalized Medicine, Gene Editing Technologies (CRISPR), Genomics and Big Data.</p>
+                    <p><strong>Industry Future Scope:</strong> Biotechnology and Pharmaceuticals, Healthcare, Agriculture</p>
+                    <p><strong>Top Colleges:</strong>  University of Madras, VIT, IIT Madras, SASTRA University.</p>
+                    <p><strong>Basic Projects:</strong>Genetic Experiments, Bioinformatics Analysis, Genetic Councelling Studies </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Genomic Data science, Certificate in Medical Science, Certificate in Genetic Councelling</p>`;
+
+            } 
+	else if (field === "history") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in History</p>
+                    <p><strong>Top Paying Jobs:</strong> Archivist, Meuseum Curator, Historian, Librarian ( with Archival Focus) researcher, Journalist/ Writer/ Documentrian.</p>
+                    <p><strong>Why History?</strong> Understanding the past, Critical Thinking, Storytelling, Intellectual Curiosity.</p>
+                    <p><strong>Field Future Scope:</strong> Digital History, Public History, Cultural Heritage Management.</p>
+                    <p><strong>Industry Future Scope:</strong> Education, Museums and Archives, Government and Public ServiceMedia and Journalism</p>
+                    <p><strong>Top Colleges:</strong>  Loyala college, Ramakrishna Mission Vevekanada College, Veltech University.</p>
+                    <p><strong>Basic Projects:</strong>Historical research Paper, Archival research, Oral History Projects </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Archeology, Certificate in Mesuem Studies, Certificate in Historical Research</p>`;
+
+	}
+	else if (field === "healthcare") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> required  medical degree ( MD or DO), Master's degree in Public Health</p>
+                    <p><strong>Top Paying Jobs:</strong> Surgeons, Cardiologists, Dermatologists, Radiologists, Anestiologists.</p>
+                    <p><strong>Why healthcare?</strong> Helping Others, intellectual challenge, direct impact on lives.</p>
+                    <p><strong>Field Future Scope:</strong> Tech advancements, Aging population, Preventive care, telemedicine.</p>
+                    <p><strong>Industry Future Scope:</strong> Hospitals, clinics, private practice, research, public health</p>
+                    <p><strong>Top Colleges:</strong> AIIMS, CMC Vellore, AFMC Pune.</p>
+                    <p><strong>Basic Projects:</strong>Clinical rotations, research, case studies, comunity health work </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Healthcare Management, Certificate in Health Informatics, Certificate in EMS</p>`;
+
+            } 
+	else if (field === "information technology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's in Computer Science, Information Technology</p>
+                    <p><strong>Top Paying Jobs:</strong> Cybersecurity professionals, Cloud Engineers, Software engineers, Data Scientist/ Machine Learning Engineer, IT Manager.</p>
+                    <p><strong>Why Information Technology (IT)?</strong> Problem Solving, Innovation, High Demand, Impactful career, Continuous learning.</p>
+                    <p><strong>Field Future Scope:</strong> Problem Solving, AI & ML, Cloud Computing, Cybersecurity, Big Data Analytics, IoT.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Finance, Healthcare, Manufacturing, Retail</p>
+                    <p><strong>Top Colleges:</strong>  IITs, NITs, IIITs, BITS Pilani, IISc, VIT, Vel Tech University.</p>
+                    <p><strong>Basic Projects:</strong>Software development, Networking project, cybersecurity project, Data Science project, Web Development Project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Cloud computing, Certificate in Data Science, Certificate in Cloud computing, Professional certificate in Data Science</p>`;
+
+            } 
+	else if (field === "industrial design") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Fine Arts/ Design</p>
+                    <p><strong>Top Paying Jobs:</strong> Design Director, Senior industrial Designers/ Product Designers, User Experience designers, Design Consultants, Transportation desigers.</p>
+                    <p><strong>Why Industrial design?</strong> Creativity and Problem Solving, User centred focus, Tangible Impact, Blending Art Engineering.</p>
+                    <p><strong>Field Future Scope:</strong> Human Centred design, Sustainable design, Smart products and IoT, Aadditive Manufacturing ( 3D Printing).</p>
+                    <p><strong>Industry Future Scope:</strong> Consumer Products, Medical devices, Automative and Transportation, Furniture and Home Goods.</p>
+                    <p><strong>Top Colleges:</strong>  NID, IDC, IIT Bombay, IISc, Shrishti Institute of Art, Dsign and Technology, Pearl Academy.</p>
+                    <p><strong>Basic Projects:</strong>Product design, UI Design, Transportation Design, Furniture design projectDesign for sustability project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Product Design, Certificate in UI/UX Design, Certificate in 3D Modelling and CAD</p>`;
+
+            } 
+	else if (field === "international relations") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in International Relations, Polticaal Science</p>
+                    <p><strong>Top Paying Jobs:</strong> International Lawyers,Political Risk Analyst, International Consultants, Lobbyists, Economists ( with international focus).</p>
+                    <p><strong>Why International Relationship?</strong> Global Awareness, Making a difference, Intellectual Stimulation, Interdisciplinary.</p>
+                    <p><strong>Field Future Scope:</strong> Global Challenges, Technological change, Globalization.</p>
+                    <p><strong>Industry Future Scope:</strong> Government, NGOs,Business, Think Tanks and Research Institutes</p>
+                    <p><strong>Top Colleges:</strong>  JNU, University of Delhi, IIFT, South Asian University.</p>
+                    <p><strong>Basic Projects:</strong>Research Papers and Policy Analysis </p>
+                    <p><strong>Additional Courses:</strong> Certificate in in diplomacy and International Relations, Certificate in Global Governance, certificate in Human Rights and International Laws</p>`;
+
+            } 
+	else if (field === "law") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in law, LLB, LLM</p>
+                    <p><strong>Top Paying Jobs:</strong> Partners at Top Law firms, Corporate Counsel, Specalized Lawyers, Judges.</p>
+                    <p><strong>Why  Law?</strong> Intellectual Challenge, MAking a difference, Variety, Prestige.</p>
+                    <p><strong>Field Future Scope:</strong> Legal Tech, Globalization, Specalization, Altyernative Dispute Resolution.</p>
+                    <p><strong>Industry Future Scope:</strong> Legal Tech, Regulatory Compliance, Public Interest Law.</p>
+                    <p><strong>Top Colleges:</strong>  National Law Schools, Faculty of Delhi,ILS Pune, VIT, Vel Tech University.</p>
+                    <p><strong>Basic Projects:</strong> Legal Research and writing, Moot court, Client interviewing, Legal CLinic, Internship at law firm </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Legal Drafting, Certificate in intellectual Property, Certificate in Criminal Law, Certificate in Corporate Law</p>`;
+
+            } 
+	else if (field === "literature") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in Litearture, English Literature</p>
+                    <p><strong>Top Paying Jobs:</strong> Professor/ Academia, Editor, Literary Agent, Content Writer, Technical Writer, Grant Writer .</p>
+                    <p><strong>Why  Literature?</strong> passion for reading and writing, Intellectual curiosity, Critical Thinking, Understanding the human.</p>
+                    <p><strong>Field Future Scope:</strong> Digital Humanities, Content Creation, Interdiscipilnary Studies.</p>
+                    <p><strong>Industry Future Scope:</strong> Publishing, Media and Journalism, Education.</p>
+                    <p><strong>Top Colleges:</strong>  University of Delhi, JNU, Presidency University, EFLU.</p>
+                    <p><strong>Basic Projects:</strong> Literary Analysis Paper, Research, creative Writing, Book reviews </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Creative Writing, Certificate in Poetry Writing</p>`;
+
+            } 
+	else if (field === "linguists") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts  or bachelor's/ MAster's of Science in Linguists</p>
+                    <p><strong>Top Paying Jobs:</strong> Computational Linguists, Speech-Language Pathologists, Forensic Linguists, Translator/ Interpreter, Lexicographer, Professor/ Academic ( Linguists) .</p>
+                    <p><strong>Why  Linguists?</strong> Fascination with Language, Analytical Thinkiing, Interdisciplinary, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Natural Language Processing (NLP), Language technology, Language documentation, and revitalization, Intercultural Communication.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Education, Healthcare, Government.</p>
+                    <p><strong>Top Colleges:</strong>  University of Delhi, JNU, CIIL, Deccan post-Graduate and Research Institute, University of Hyderabad.</p>
+                    <p><strong>Basic Projects:</strong> Language documentation, Sociolinguistic research, Computational Linguistic, Phonetic Analysis, Historical Linguist Project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Applied lLinguists, Certificate in Foreign Linguistics, Certificate in Computational Linguistics</p>`;
+
+            } 
+	else if (field === "journalism") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's Journalism, Mass Comunication </p>
+                    <p><strong>Top Paying Jobs:</strong> Investigative reporters, Anchors and Presenters, Executive Producers, Editors-in-chief/ Managing Editors, Data Journalists/ Visual Story Tellers, Specalized Correspondents.</p>
+                    <p><strong>Why  Journalism?</strong> Passion for story telling, Informing the public, Holding Power Accountable, Making a difference, Intellectual Curiosity.</p>
+                    <p><strong>Field Future Scope:</strong> Digital Transformation & Convergence, Visual Story telling, Data Journalism&  Computational Journalism, Niche Journalism & Specalization, Entrepreneurial Journalism & Innovation.</p>
+                    <p><strong>Industry Future Scope:</strong> Platform Diversification, Audience Engagement & Community Building, Fact-Checking & Combating Misinformation, Sustainability of Journalism.</p>
+                    <p><strong>Top Colleges:</strong>  IIJNM, Asian College Of Journalism.</p>
+                    <p><strong>Basic Projects:</strong> Literary Analysis Paper, Research, creative Writing, Book reviews </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Creative Writing, Certificate in Poetry Writing</p>`;
+
+            } 
+	else if (field === "marine biology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Science in Marine Biology, Biology</p>
+                    <p><strong>Top Paying Jobs:</strong> Research Scientist, Marine Biologist, Fisheries Biologist, Marine Conservationist, Aquaculture Specalist.</p>
+                    <p><strong>Why  marine Biology?</strong> Passion for the ocean, Scientific Curiosity, Enviroinmental Stewardship , Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Climate change, Conversation Biology, Marine Biotechnology, Sustainable fisheries.</p>
+                    <p><strong>Industry Future Scope:</strong> Government Agencies, Enviroinmental Consulting Firms, Aquaculture and Fisheries, NOn Profit Organizations.</p>
+                    <p><strong>Top Colleges:</strong>  Indian institute of Oceanography, National institute of Ocean Technology, central Marine Fisheries Research Institute, Annamalai University.</p>
+                    <p><strong>Basic Projects:</strong> Marine Ecology Research, Species Identification and surveys, water Quality Analysis, Marine Conservation Project, Aquaculture Project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Marine Conservation,  Certificate in Oceanogrography,, Certificate in Marine Biotechnology.</p>`;
+
+            } 
+	else if (field === "mathematics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts in Mathematics</p>
+                    <p><strong>Top Paying Jobs:</strong> Acutary, data Scientist, Statistican, Financial Analyst, Operations Research Analyst, Computer Scientist.</p>
+                    <p><strong>Why  Mathematics?</strong> Intellectual curiosity, Problem Solving, Analytical Thinking, Versatile, Skills.</p>
+                    <p><strong>Field Future Scope:</strong> Data science and Analytics, Computational Mathematics, Financial Modelling, Cryptography.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Finance, Healthcare, Government.</p>
+                    <p><strong>Top Colleges:</strong>  IITs, ISI, CMI, TIFR, University of delhi.</p>
+                    <p><strong>Basic Projects:</strong> Mathematical Modeling, Data Analytics Project, Research Project, Programming Project </p>
+                    <p><strong>Additional Courses:</strong> Certificate in Applied Mathematics, Cerificate in Statistics,, Certificate in Discrete Mathematics.</p>`;
+
+            } 
+	else if (field === "neuroscience") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's/Master's of Arts  or bachelor's/ Undergraduate, Postgraduate, Doctorate, Phd.D.in Neuroscience, Courses, Core neuroscience, Supporting subject.</p>
+                    <p><strong>Top Paying Jobs:</strong> Neurosurgeon, Neurologist, Research Scientist, Neuropsychologist, Pharmaceutical Researcher.</p>
+                    <p><strong>Why  Neuroscience?</strong>Curiosity about the brain, Scientific inquiry, Problem solving, Impactful career.</p>
+                    <p><strong>Field Future Scope:</strong>Brain computer interfaces, Neurotechnology, Personalized medicine, Neurological disorders.</p>
+                    <p><strong>Industry Future Scope:</strong>Healthcare, Pharmaceuticals, Technologist.</p>
+                    <p><strong>Top Colleges:</strong>National brain research center (NBRC), All India institute of medical science (AIIMS), Indian institute of medical science (IISC), Jawaharlal Nehru university (JNU).</p>
+                    <p><strong>Basic Projects:</strong>Literature reviews, Experiments, Data analysis, Computation modeling, Presentations.</p>
+                    <p><strong>Additional Courses:</strong>Fundamentals of neuroscience, Neurobiology, The brain and space, Principal of neuroscience.</p>`;
+
+            }
+	else if (field === "nutrition") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  in Nutrition or Food Science and Nutrition.</p>
+                    <p><strong>Top Paying Jobs:</strong> Public Health Nutritionist, Sports Nutritionist, Food Scientist, Nutrition Consultant</p>
+                    <p><strong>Why  Nutrition?</strong>  Clinical Dietitian, Public Health Nutrioniost, Sports Nutionist, Food S.</p>
+                    <p><strong>Field Future Scope:</strong> Personalized Nutrition, Functional foods, Gut microbime, Technology and Nutrition.</p>
+                    <p><strong>Industry Future Scope:</strong> Raising Healthcare Costs, Growing Health Consciousness,Food Industry Innovation.</p>
+                    <p><strong>Top Colleges:</strong> WII, SACON, IIFM, NCBS</p>
+                    <p><strong>Basic Projects:</strong> Wildlife population Survey, Habitat Assesment, Animal Behaviour Study, Conservation Project, GIS Mapping Project</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Statistical methods and applications, Certificate in Data ScienceCertificate nn Biostatistics.</p>`;
+	}
+	else if (field === "political science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  history, economics , sociology </p>
+                    <p><strong>Top Paying Jobs:</strong> policy analysts, legislative aides, camping managers, law, business, education, journalism</p>
+                    <p><strong>Why Botany?</strong> A desire to understand how government works and how policies are made. A Commitment to promoting justice and equality.</p>
+                    <p><strong>Field Future Scope:</strong> political issues affect everyone's lives. political science are needed to analyze political trends, understand public opinion, and contribute to policy debates.</p>
+                    <p><strong>Industry Future Scope:</strong> Industry Future Scope:</strong> Government and politics, law, education, media and journalism, nonprofit and advocacy or organization</p>
+                    <p><strong>Top Colleges:</strong>  Annamalai university, Bharathidasan university, Kumara guru collage of technology, VIT, SRI KRISHNA ARTS AND SCIENCE COLLAGE, Veltech university, Anna university.</p>
+                    <p><strong>Basic Projects:</strong> Following current events and political science programs. Writing about political party or candidate. Writing about political issues or current events. Participating in debates or discussions about politics. Conducting research on a political topic of interest.</p>
+                    <p><strong>Additional Courses:</strong> Comparative politics, International politics, public policy, public administration</p>`;
+            } 
+	else if (field === "robotics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  Mechanical engineering, Electrical engineering, Computer science.</p>
+                    <p><strong>Top Paying Jobs:</strong> Robotics engineer, Automation engineer, AI engineer..</p>
+                    <p><strong>Why  Robotics?</strong>  Love of technology, Problem solving, Creativity, Making a difference..</p>
+                    <p><strong>Field Future Scope:</strong> Self diving cars, Medical robots, Space  exploration robots.</p>
+                    <p><strong>Industry Future Scope:</strong>Manufacturing, Health care, Transportation, Space exploration.</p>
+                    <p><strong>Top Colleges:</strong>MIT, Carnegie Mellon university, Stanford university, University of Pennsylvania, Caltech.</p>
+                    <p><strong>Basic Projects:</strong>Build a robot kit, Learn to program, Join a robotics club, Watch robotics videos, Visit a robotics competition.</p>
+                    <p><strong>Additional Courses:</strong Embedded Systems, B tech robotics, Sensor Integration.</p>`;
+
+            }
+	else if (field === "sports and science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  in sports science, exercise science, or a related field like kinesiology or physiology PHD for more specialized knowledge, Strength and conditioning.</p>
+                    <p><strong>Top Paying Jobs:</strong> Sports scientist, Strength and conditioning coach, Exercise physiologist, Biomechanism</p>
+                    <p><strong>Why  Sports science?</strong>  Love of sports, interest in science, Helping others, Problem solving.</p>
+                    <p><strong>Field Future Scope:</strong> Developing new training methods, Preventing injuries, Improving rehabilitation.</p>
+                    <p><strong>Industry Future Scope:</strong>Professional sports, Collegiate sports, Fitness industry, Health care.</p>
+                    <p><strong>Top Colleges:</strong>MIT, University of Michigan, University of Florida, Ohio state university, University of California, Los angels..</p>
+                    <p><strong>Basic Projects:</strong> Learn about favorite sport, Try a new workout, Interview a coach or athlete, Read a sports science book, Visit a sports science lab. .</p>
+                    <p><strong>Additional Courses:</strong  Sociology of sports, Physical education, Health promotion.</p>`;
+
+            }
+	else if (field === "sociology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Arts in sociology.</p>
+                    <p><strong>Top Paying Jobs:</strong> Market research Analyst, Data Analyst, Policy Analyst, urban Planner, professor/ Academic</p>
+                    <p><strong>Why  Sociology?</strong>  Understanding the society, Making a difference, Critical Thinking, Diverse career Path.</p>
+                    <p><strong>Field Future Scope:</strong> data Analysis, Globalization, Technology.</p>
+                    <p><strong>Industry Future Scope:</strong> Social Change, growing Complexity.</p>
+                    <p><strong>Top Colleges:</strong> JNU, University of Delhi, IITs, TISS, DSE</p>
+                    <p><strong>Basic Projects:</strong> Research Papers, Case Studies, Community Projects</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Social Research Methods, Certificate in Community Development, Certificate in Social Policy.</p>`;
+
+            }
+	else if (field === "statistics") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Science in statistics.</p>
+                    <p><strong>Top Paying Jobs:</strong>data Scientist, Statistician, Actuary, Biostatistician, Financial Analyst</p>
+                    <p><strong>Why  Statistics?</strong>  Problem-Solving, Analytical Skills,Impactful Career, High demand.</p>
+                    <p><strong>Field Future Scope:</strong> Big data, Machine Learning, Data Visualization.</p>
+                    <p><strong>Industry Future Scope:</strong> Technology, Healthcare, Finance.</p>
+                    <p><strong>Top Colleges:</strong> University of Delhi, IITs, ISI, CMI, IISc</p>
+                    <p><strong>Basic Projects:</strong> data Analysis, Statistical Modeling, Experimental Design, research projects</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Statistical methods and applications, Certificate in Data ScienceCertificate nn Biostatistics.</p>`;
+
+            }
+	else if (field === "sustainability studies") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Arts Bachelors/ Masters of Science in Sustainability studies.</p>
+                    <p><strong>Top Paying Jobs:</strong> Sustainability Consultant, Enviroinmental Manager, Corporate Social Responsibility, Policy Analyst, Renewable Energy Engineer</p>
+                    <p><strong>Why  Sustainable studies?</strong>  Enviroinmental concern, Social Justice, Systems Thinking Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Climate Change, Resorce Scarcity, corporate Sustainability.</p>
+                    <p><strong>Industry Future Scope:</strong> Government Regulations, Consumer demand, Technological Innovation.</p>
+                    <p><strong>Top Colleges:</strong> TERI School of Advanced Studies, Ashoka University, CSE New Delhi IITs, TISS</p>
+                    <p><strong>Basic Projects:</strong> Sustainability Audits, Life cycle Assesment, Policy analysis, Community Projects</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Sustainable Development, Certificate in renewable Energy, Certificate in Enviroinmental Policy.</p>`;
+
+            }
+	else if (field === "theology") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Arts in Theology, religious studies, Bachelor's/ Master's in Divinity.</p>
+                    <p><strong>Top Paying Jobs:</strong> Professor/ theologian, Clergy/ Religious leader, Chaplain, Author/ Speaker, Religious Non-profit, Leader</p>
+                    <p><strong>Why  Theology?</strong> Spirtual Calling, Intellectual Curiosity, helping others, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Interfaith dialouge, Contextual theology, Digital theology.</p>
+                    <p><strong>Industry Future Scope:</strong> Secularization, Riligious Diversity.</p>
+                    <p><strong>Top Colleges:</strong> United theological College Bangalore, Serampore college Serampore, St. Stephen College delhi, Various denominational Seminaries and theological colleges</p>
+                    <p><strong>Basic Projects:</strong> Exegesis, theological Research, Comparative Theology, Ethical Analysis</p>
+                    <p><strong>Additional Courses:</strong  Diploma in theoogy, Diploma in Religious Education.</p>`;
+
+	}
+	else if (field === "tourism management") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  in Tourism Management.</p>
+                    <p><strong>Top Paying Jobs:</strong>dDestination Marketting Manager, Hotel General Manager, Tour Operator Manager, Event Planer, travel Agency manager</p>
+                    <p><strong>Why  Tourism Management?</strong>  Passion for travel, People Oriented, Dynamic Enviroinment, growth potential.</p>
+                    <p><strong>Field Future Scope:</strong> Sustainable tourism, technology integration, Experential Travel, Niche tourism.</p>
+                    <p><strong>Industry Future Scope:</strong> Global tourism, Online Travel agencies, Destination Marketting, Travel Technology.</p>
+                    <p><strong>Top Colleges:</strong> IITTM, National Institute of Tourism and Hospiatality Management, Christ Universityu, Manipal university and Amity University</p>
+                    <p><strong>Basic Projects:</strong> developing a tourism arketing Plan for a destination, Planning and Executing a Tour or Event, Conducting market REsearch for a tourism plan for a region, Analyzing the operations of a tourism Business</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Statistical methods and applications, Certificate in Data ScienceCertificate nn Biostatistics.</p>`;
+	}
+	else if (field === "transportation engineering") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's in civl Engineering.</p>
+                    <p><strong>Top Paying Jobs:</strong> Transportation engineer, traffic engineer, Transportation Planner, HighwayEngineer, Pavement Engineer</p>
+                    <p><strong>Why  Transportation Engineering?</strong>  Problem-Solving, Interdisciplinary Field,Impactful Career, Growing demand.</p>
+                    <p><strong>Field Future Scope:</strong> Smart Transportation, Sustainable Transportation, Autonomopus Vechicles, Public Transportation.</p>
+                    <p><strong>Industry Future Scope:</strong> Population Growth, Economic development, Technological Advancement.</p>
+                    <p><strong>Top Colleges:</strong> IITs, NITs, IISc, DTU, Anna University, VIT, Vel Tech University</p>
+                    <p><strong>Basic Projects:</strong> Traffic Studies, Highway Design, Pavement design, Transportation Planning, Research Projects</p>
+                    <p><strong>Additional Courses:</strong  Certificate in intelligent Transport System, Certificate in Transportation planning Management, Certificate in Sustainable Transportation.</p>`;
+	}
+	else if (field === "urban planning") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> pursue Degree in Architecture, Civil Engineering, Geography, economics, Sociology, Enviroinmental Studies. Master's in city planning/ urban planning.</p>
+                    <p><strong>Top Paying Jobs:</strong>Urban Planning Manager, Real Estate developer, Transportation Planner, Urban Designer, Consulting</p>
+                    <p><strong>Why  Urban Planning?</strong>  Shaping Communities, Soliving problems, Interdisciplinary Field, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Sustainable cities, technology, Resilience.</p>
+                    <p><strong>Industry Future Scope:</strong> urbanization, Infrastructure development.</p>
+                    <p><strong>Top Colleges:</strong> SPA, IITs, CEPT University, NIUA</p>
+                    <p><strong>Basic Projects:</strong> Urban design Projects, Land Use Planning, Transportation Planning, Community Development Projects</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Urban Design, certificate in transportation Planing.</p>`;
+	}
+	else if (field === "vetinary science") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Doctor of Vetinary Medicine / Bachelor's/ Master's Of Vetinary Science / Bachelor of Vetinary science & Animal Husbandary</p>
+                    <p><strong>Top Paying Jobs:</strong> Specalist Vetinarians, Private Practice Owners,Vetinary Specalists in Industry, Government Vetinarians</p>
+                    <p><strong>Why  Vetinary Science?</strong>  Love for Animals, Scientific Interest, Problem DSolving, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Advanced Diagnostics and Treatments, One Health, Animal Welfare, Specalization.</p>
+                    <p><strong>Industry Future Scope:</strong> Pet Ownership, Food safety, Zoonatic diseases.</p>
+                    <p><strong>Top Colleges:</strong> indian Vetinary Research Institute, National Diary Research Institute, College of Vetinary Science assam Agricultural University, College of Vetinary and animal sciences, Tamilnadu Vetinary and AAnimal sciences.</p>
+                    <p><strong>Basic Projects:</strong> Clinical Rotations, Animal Husbandary Projects, Public health Projects, Case Studies</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Vetinary Surgery, certificate in Vetinary radiology, certificate in Vetinary Pathalogy.</p>`;
+	}
+	else if (field === "visual arts") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Fine arts / Arts.</p>
+                    <p><strong>Top Paying Jobs:</strong>Art Director, crative Director, Graphic designer, Animator, Photographer, Gallery Director/ Curator, Professor/ Academic</p>
+                    <p><strong>Why  Visual Arts?</strong>  Creative Expression, Communication, Problem-Solving, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Digital art and media, Interdisciplinary, Public art, Socially engaged Art.</p>
+                    <p><strong>Industry Future Scope:</strong> Art Market, Crative Industries, Museums and Galleries, Education.</p>
+                    <p><strong>Top Colleges:</strong> NID, Sir J.J. School of Art, Visva-Bharati University</p>
+                    <p><strong>Basic Projects:</strong> Studio Art Project, Photography,  digital Art project, Exhibition project, Research Project</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Graphic Design, Certificate in Illustration, Certificate in Digital photography.</p>`;
+	}
+	else if (field === "women studies") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  of Arts in women studies.</p>
+                    <p><strong>Top Paying Jobs:</strong> policy Analyst ( Gender Equality), advocacy, Diversity and Inclusion officer, Researcher, Consultant, professor? Academic</p>
+                    <p><strong>Why  Women studies?</strong>  Social Justice, Critical Thinking, Making a difference, Interdisciplinary.</p>
+                    <p><strong>Field Future Scope:</strong> Gender Equality, Intersectionality, Global Perspectives, Social Change.</p>
+                    <p><strong>Industry Future Scope:</strong> Non-profit organizations, Government, Education, Business.</p>
+                    <p><strong>Top Colleges:</strong> TISS, University of Delhi, JNU, Women's University, University of Hyderabad</p>
+                    <p><strong>Basic Projects:</strong> Research, policy Analysis, Comunity-Based Project</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Gender and Development, Certificate in women's Health, Certificate in Women's Leadership.</p>`;
+	}
+	else if (field === "wildlife conservation") {
+                recommendation = `
+                    <h3>AI Study Recommendation</h3>
+                    <p><strong>Degree & Courses:</strong> Bachelor's / Master's  Wildlife Conservation.</p>
+                    <p><strong>Top Paying Jobs:</strong> Wildlife Biologist, CConservation Scientist, Wildlife Veterinarian, Enviroinmental consultant, Park Ranger/ Wildlife Manager, Professor/ Academic</p>
+                    <p><strong>Why  Wildlife Conservation?</strong>  Passion of Wildlife, Enviroinmental Stewardship, Scientific Curiosity, Making a difference.</p>
+                    <p><strong>Field Future Scope:</strong> Climate Change, Habitat Loss and Fragmentation, Human-Wildlife Conflict, Endangered species Conservation.</p>
+                    <p><strong>Industry Future Scope:</strong> Government Agencies, Non-Profit Organisations, Zoos and Aquariums,Enviroinmental Consulting Firms.</p>
+                    <p><strong>Top Colleges:</strong> WII, SACON, IIFM, NCBS</p>
+                    <p><strong>Basic Projects:</strong> Wildlife population Survey, Habitat Assesment, Animal Behaviour Study, Conservation Project, GIS Mapping Project</p>
+                    <p><strong>Additional Courses:</strong  Certificate in Statistical methods and applications, Certificate in Data ScienceCertificate nn Biostatistics.</p>`;
+	}
+
+            else {
+                recommendation = "Other fields coming soon...";
+            }
+            document.getElementById("recommendation-result").innerHTML = recommendation;
+        }
+    </script>
+</body>
+</html>

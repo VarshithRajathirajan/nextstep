@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Map</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('https://static.vecteezy.com/system/resources/previews/014/248/482/original/growth-strategy-career-path-development-or-growing-business-employee-training-or-improvement-job-promotion-concept-flat-modern-illustration-vector.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        h1 {
+            color: #880808;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        form, #roadmapResult {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Road Map</h1>
+    <div class="container">
+        <form id="roadmapForm">
+            <label for="field">Choose your field:</label>
+            <select id="field" name="field">
+                <option value="engineering">Engineering</option>
+                <option value="medicine">Medicine</option>
+                <option value="law">Law</option>
+                <option value="business">Business</option>
+                <option value="arts">Arts</option>
+            </select>
+            <button type="button" onclick="displayRoadmap()">Get Roadmap</button>
+        </form>
+
+        <div id="roadmapResult"></div>
+    </div>
+
+    <script>
+        function displayRoadmap() {
+            const field = document.getElementById('field').value;
+            let roadmap = '';
+
+            switch (field) {
+                case 'engineering':
+                    roadmap = `
+                        <h2>Engineering Roadmap</h2>
+                        <ul>
+                            <li>Complete 10+2 with Physics, Chemistry, and Mathematics</li>
+                            <li>Appear for JEE Main and JEE Advanced</li>
+                            <li>Get admission in a reputed engineering college</li>
+                            <li>Complete your B.Tech degree</li>
+                            <li>Consider pursuing M.Tech or MBA for further studies</li>
+                        </ul>
+                    `;
+                    break;
+                case 'medicine':
+                    roadmap = `
+                        <h2>Medicine Roadmap</h2>
+                        <ul>
+                            <li>Complete 10+2 with Physics, Chemistry, and Biology</li>
+                            <li>Appear for NEET</li>
+                            <li>Get admission in a medical college</li>
+                            <li>Complete your MBBS degree</li>
+                            <li>Consider pursuing MD/MS for specialization</li>
+                        </ul>
+                    `;
+                    break;
+                case 'law':
+                    roadmap = `
+                        <h2>Law Roadmap</h2>
+                        <ul>
+                            <li>Complete 10+2 in any stream</li>
+                            <li>Appear for CLAT or other law entrance exams</li>
+                            <li>Get admission in a law college</li>
+                            <li>Complete your LLB degree</li>
+                            <li>Consider pursuing LLM for further studies</li>
+                        </ul>
+                    `;
+                    break;
+                case 'business':
+                    roadmap = `
+                        <h2>Business Roadmap</h2>
+                        <ul>
+                            <li>Complete 10+2 in any stream</li>
+                            <li>Appear for CAT, XAT, or other MBA entrance exams</li>
+                            <li>Get admission in a business school</li>
+                            <li>Complete your MBA degree</li>
+                            <li>Consider pursuing a Ph.D. or specialized certifications</li>
+                        </ul>
+                    `;
+                    break;
+                case 'arts':
+                    roadmap = `
+                        <h2>Arts Roadmap</h2>
+                        <ul>
+                            <li>Complete 10+2 in any stream</li>
+                            <li>Choose a specialization (e.g., History, Sociology, etc.)</li>
+                            <li>Get admission in a college offering your chosen specialization</li>
+                            <li>Complete your Bachelor's degree</li>
+                            <li>Consider pursuing a Master's degree or Ph.D.</li>
+                        </ul>
+                    `;
+                    break;
+                default:
+                    roadmap = '<p>Please select a valid field.</p>';
+            }
+
+            document.getElementById('roadmapResult').innerHTML = roadmap;
+        }
+    </script>
+</body>
+</html>

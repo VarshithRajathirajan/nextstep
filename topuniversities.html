@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Universities and Colleges</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('https://static.vecteezy.com/system/resources/previews/014/248/482/original/growth-strategy-career-path-development-or-growing-business-employee-training-or-improvement-job-promotion-concept-flat-modern-illustration-vector.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        h1 {
+            color: #880808;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        form, #collegeResult {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Universities and Colleges</h1>
+    <div class="container">
+        <form id="collegeForm">
+            <label for="region">Choose region:</label>
+            <select id="region" name="region">
+                <option value="india">India</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+            </select>
+            <label for="field">Choose your field:</label>
+            <select id="field" name="field">
+                <option value="engineering">Engineering</option>
+                <option value="medicine">Medicine</option>
+                <option value="law">Law</option>
+                <option value="business">Business</option>
+                <option value="arts">Arts</option>
+            </select>
+            <button type="button" onclick="displayColleges()">Get Colleges</button>
+        </form>
+        <div id="collegeResult"></div>
+    </div>
+    <script>
+        function displayColleges() {
+            const region = document.getElementById('region').value;
+            const field = document.getElementById('field').value;
+            let colleges = '';
+
+            if (region === 'india') {
+                switch (field) {
+                    case 'engineering':
+                        colleges = `<h2>Top Engineering Colleges in India</h2><ul><li>IIT Bombay</li><li>IIT Delhi</li><li>IIT Madras</li><li>IIT Kanpur</li><li>IIT Kharagpur</li></ul>`;
+                        break;
+                    case 'medicine':
+                        colleges = `<h2>Top Medical Colleges in India</h2><ul><li>AIIMS Delhi</li><li>CMC Vellore</li><li>PGIMER Chandigarh</li><li>NIMHANS Bangalore</li><li>JIPMER Puducherry</li></ul>`;
+                        break;
+                    case 'law':
+                        colleges = `<h2>Top Law Colleges in India</h2><ul><li>NLSIU Bangalore</li><li>NLU Delhi</li><li>NALSAR Hyderabad</li><li>WBNUJS Kolkata</li><li>GLC Mumbai</li></ul>`;
+                        break;
+                    case 'business':
+                        colleges = `<h2>Top Business Schools in India</h2><ul><li>IIM Ahmedabad</li><li>IIM Bangalore</li><li>IIM Calcutta</li><li>XLRI Jamshedpur</li><li>ISB Hyderabad</li></ul>`;
+                        break;
+                    case 'arts':
+                        colleges = `<h2>Top Arts Colleges in India</h2><ul><li>St. Stephen's College, Delhi</li><li>Loyola College, Chennai</li><li>Presidency College, Chennai</li><li>Lady Shri Ram College, Delhi</li><li>Christ University, Bangalore</li></ul>`;
+                        break;
+                    default:
+                        colleges = '<p>Please select a valid field.</p>';
+                }
+            } else if (region === 'tamilnadu') {
+                switch (field) {
+                    case 'engineering':
+                        colleges = `<h2>Top Engineering Colleges in Tamil Nadu</h2><ul><li>IIT Madras</li><li>Anna University, CEG</li><li>PSG College of Technology</li><li>VIT Vellore</li><li>SRM Institute of Science and Technology</li><li>Vel Tech Rangarajan Dr.Sagunthala R&D Institute of Science and Technology</li></ul>`;
+                        break;
+                    case 'medicine':
+                        colleges = `<h2>Top Medical Colleges in Tamil Nadu</h2><ul><li>CMC Vellore</li><li>Madras Medical College</li><li>Stanley Medical College</li><li>Christian Medical College, Vellore</li><li>JIPMER Puducherry (nearby)</li></ul>`;
+                        break;
+                    case 'law':
+                        colleges = `<h2>Top Law Colleges in Tamil Nadu</h2><ul><li>School of Excellence in Law, Chennai</li><li>Dr. Ambedkar Government Law College, Chennai</li><li>Saveetha School of Law, Chennai</li><li>VIT School of Law, Vellore</li><li>SRM School of Law, Chennai</li><li>Vel Tech Rangarajan Dr.Sagunthala R&D Institute of Science and Technology</li></ul>`;
+                        break;
+                    case 'business':
+                        colleges = `<h2>Top Business Schools in Tamil Nadu</h2><ul><li>Great Lakes Institute of Management, Chennai</li><li>Loyola Institute of Business Administration, Chennai</li><li>PSG Institute of Management, Coimbatore</li><li>Amrita School of Business, Coimbatore</li><li>SRM Institute of Science and Technology, Chennai</li><li>Vel Tech Rangarajan Dr.Sagunthala R&D Institute of Science and Technology</li></ul>`;
+                        break;
+                    case 'arts':
+                        colleges = `<h2>Top Arts Colleges in Tamil Nadu</h2><ul><li>Loyola College, Chennai</li><li>Presidency College, Chennai</li><li>Madras Christian College, Chennai</li><li>Women's Christian College, Chennai</li><li>Ethiraj College for Women, Chennai</li><li>Vel Tech Rangarajan Dr.Sagunthala R&D Institute of Science and Technology</li></ul>`;
+                        break;
+                    default:
+                        colleges = '<p>Please select a valid field.</p>';
+                }
+            }
+
+            document.getElementById('collegeResult').innerHTML = colleges;
+        }
+    </script>
+</body>
+</html>
